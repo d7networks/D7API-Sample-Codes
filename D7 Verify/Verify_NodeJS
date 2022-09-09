@@ -1,0 +1,77 @@
+````````````````` Send ````````````````` 
+var axios = require('axios');
+var FormData = require('form-data');
+var data = new FormData();
+data.append('mobile', '963951896080');
+data.append('sender_id', 'SMSINFO');
+data.append('message', 'Your D7SMS OTP is {code}, Donot share it with anyone. ');
+data.append('expiry', '900');
+
+var config = {
+  method: 'post',
+  url: 'https://d7networks.com/api/verifier/send\n',
+  headers: { 
+    'Authorization': '{{api_access_token}}', 
+    ...data.getHeaders()
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
+
+
+````````````````` Verify ````````````````` 
+var axios = require('axios');
+var FormData = require('form-data');
+var data = new FormData();
+data.append('otp_id', 'c1e881a5-493a-468f-b339-df8cc09ef661');
+data.append('otp_code', '554992');
+
+var config = {
+  method: 'post',
+  url: 'https://d7networks.com/api/verifier/verify',
+  headers: { 
+    'Authorization': '{{api_access_token}}', 
+    ...data.getHeaders()
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});
+
+
+````````````````` ReSend ````````````````` 
+var axios = require('axios');
+var FormData = require('form-data');
+var data = new FormData();
+data.append('otp_id', '3d343630-2cbf-46f0-bc27-a867c8d692e9');
+
+var config = {
+  method: 'post',
+  url: 'https://d7networks.com/api/verifier/resend\n',
+  headers: { 
+    'Authorization': '{{api_access_token}}', 
+    ...data.getHeaders()
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});

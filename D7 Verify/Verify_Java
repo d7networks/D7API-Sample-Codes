@@ -1,0 +1,49 @@
+````````````````` Send ````````````````` 
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("text/plain");
+RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
+  .addFormDataPart("mobile","963951896080")
+  .addFormDataPart("sender_id","SMSINFO")
+  .addFormDataPart("message","Your D7SMS OTP is {code}, Donot share it with anyone. ")
+  .addFormDataPart("expiry","900")
+  .build();
+Request request = new Request.Builder()
+  .url("https://d7networks.com/api/verifier/send
+")
+  .method("POST", body)
+  .addHeader("Authorization", "{{api_access_token}}")
+  .build();
+Response response = client.newCall(request).execute();
+
+
+````````````````` Verify ````````````````` 
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("text/plain");
+RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
+  .addFormDataPart("otp_id","c1e881a5-493a-468f-b339-df8cc09ef661")
+  .addFormDataPart("otp_code","554992")
+  .build();
+Request request = new Request.Builder()
+  .url("https://d7networks.com/api/verifier/verify")
+  .method("POST", body)
+  .addHeader("Authorization", "{{api_access_token}}")
+  .build();
+Response response = client.newCall(request).execute();
+
+
+````````````````` ReSend ````````````````` 
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("text/plain");
+RequestBody body = new MultipartBody.Builder().setType(MultipartBody.FORM)
+  .addFormDataPart("otp_id","3d343630-2cbf-46f0-bc27-a867c8d692e9")
+  .build();
+Request request = new Request.Builder()
+  .url("https://d7networks.com/api/verifier/resend
+")
+  .method("POST", body)
+  .addHeader("Authorization", "{{api_access_token}}")
+  .build();
+Response response = client.newCall(request).execute();

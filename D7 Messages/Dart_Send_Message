@@ -1,0 +1,34 @@
+var headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'Authorization': 'Bearer TOKEN'
+};
+var request = http.Request('POST', Uri.parse('https://api.d7networks.com/messages/v1/send'));
+request.body = json.encode({
+  "messages": [
+    {
+      "channel": "sms",
+      "recipients": [
+        9715097526xx,
+        9715097526xx
+      ],
+      "content": "Greetings from D7 API",
+      "msg_type": "text",
+      "data_coding": "text"
+    }
+  ],
+  "message_globals": {
+    "originator": "SignOTP",
+    "report_url": "https://the_url_to_recieve_delivery_report.com"
+  }
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}

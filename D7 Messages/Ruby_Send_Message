@@ -1,0 +1,34 @@
+require "uri"
+require "json"
+require "net/http"
+
+url = URI("https://api.d7networks.com/messages/v1/send")
+
+https = Net::HTTP.new(url.host, url.port)
+https.use_ssl = true
+
+request = Net::HTTP::Post.new(url)
+request["Content-Type"] = "application/json"
+request["Accept"] = "application/json"
+request["Authorization"] = "Bearer {{api_access_token}}"
+request.body = JSON.dump({
+  "messages": [
+    {
+      "channel": "sms",
+      "recipients": [
+        {{recipient1}},
+        {{recipient2}}
+      ],
+      "content": "Greetings from D7 API",
+      "msg_type": "text",
+      "data_coding": "text"
+    }
+  ],
+  "message_globals": {
+    "originator": "SignOTP",
+    "report_url": "https://the_url_to_recieve_delivery_report.com"
+  }
+})
+
+response = https.request(request)
+puts response.read_body

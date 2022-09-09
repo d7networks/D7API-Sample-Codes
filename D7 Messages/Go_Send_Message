@@ -1,0 +1,55 @@
+package main
+
+import (
+	"fmt"
+	"io/ioutil"
+	"net/http"
+	"strings"
+)
+
+func main() {
+
+	url := "https://api.d7networks.com/messages/v1/send"
+	method := "POST"
+
+	payload := strings.NewReader(`{
+  "messages": [
+    {
+        "channel": "sms",
+        "recipients": [{{recipient1}},{{recipient2}}],
+        "content": "Greetings from D7 API",
+        "msg_type": "text",
+        "data_coding": "text"
+    }
+  ],
+  "message_globals": {
+    "originator": "SignOTP",
+    "report_url": "https://the_url_to_recieve_delivery_report.com"
+  }
+}`)
+
+	client := &http.Client{}
+	req, err := http.NewRequest(method, url, payload)
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	req.Header.Add("Content-Type", "application/json")
+	req.Header.Add("Accept", "application/json")
+	req.Header.Add("Authorization", "Bearer {{api_access_token}}")
+
+	res, err := client.Do(req)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer res.Body.Close()
+
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(string(body))
+}

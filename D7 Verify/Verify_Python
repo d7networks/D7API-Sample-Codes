@@ -1,0 +1,114 @@
+````````````````` Send ````````````````` 
+
+import http.client
+import mimetypes
+from codecs import encode
+
+conn = http.client.HTTPSConnection("d7networks.com")
+dataList = []
+boundary = 'wL36Yn8afVp8Ag7AmP8qZ0SA4n1v9T'
+dataList.append(encode('--' + boundary))
+dataList.append(encode('Content-Disposition: form-data; name=mobile;'))
+
+dataList.append(encode('Content-Type: {}'.format('text/plain')))
+dataList.append(encode(''))
+
+dataList.append(encode("963951896080"))
+dataList.append(encode('--' + boundary))
+dataList.append(encode('Content-Disposition: form-data; name=sender_id;'))
+
+dataList.append(encode('Content-Type: {}'.format('text/plain')))
+dataList.append(encode(''))
+
+dataList.append(encode("SMSINFO"))
+dataList.append(encode('--' + boundary))
+dataList.append(encode('Content-Disposition: form-data; name=message;'))
+
+dataList.append(encode('Content-Type: {}'.format('text/plain')))
+dataList.append(encode(''))
+
+dataList.append(encode("Your D7SMS OTP is {code}, Donot share it with anyone."))
+dataList.append(encode('--' + boundary))
+dataList.append(encode('Content-Disposition: form-data; name=expiry;'))
+
+dataList.append(encode('Content-Type: {}'.format('text/plain')))
+dataList.append(encode(''))
+
+dataList.append(encode("900"))
+dataList.append(encode('--'+boundary+'--'))
+dataList.append(encode(''))
+body = b'\r\n'.join(dataList)
+payload = body
+headers = {
+  'Authorization': '{{api_access_token}}',
+  'Content-type': 'multipart/form-data; boundary={}'.format(boundary)
+}
+conn.request("POST", "/api/verifier/send
+", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+
+````````````````` Verify ````````````````` 
+import http.client
+import mimetypes
+from codecs import encode
+
+conn = http.client.HTTPSConnection("d7networks.com")
+dataList = []
+boundary = 'wL36Yn8afVp8Ag7AmP8qZ0SA4n1v9T'
+dataList.append(encode('--' + boundary))
+dataList.append(encode('Content-Disposition: form-data; name=otp_id;'))
+
+dataList.append(encode('Content-Type: {}'.format('text/plain')))
+dataList.append(encode(''))
+
+dataList.append(encode("c1e881a5-493a-468f-b339-df8cc09ef661"))
+dataList.append(encode('--' + boundary))
+dataList.append(encode('Content-Disposition: form-data; name=otp_code;'))
+
+dataList.append(encode('Content-Type: {}'.format('text/plain')))
+dataList.append(encode(''))
+
+dataList.append(encode("554992"))
+dataList.append(encode('--'+boundary+'--'))
+dataList.append(encode(''))
+body = b'\r\n'.join(dataList)
+payload = body
+headers = {
+  'Authorization': '{{api_access_token}}',
+  'Content-type': 'multipart/form-data; boundary={}'.format(boundary)
+}
+conn.request("POST", "/api/verifier/verify", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
+
+````````````````` ReSend ````````````````` 
+import http.client
+import mimetypes
+from codecs import encode
+
+conn = http.client.HTTPSConnection("d7networks.com")
+dataList = []
+boundary = 'wL36Yn8afVp8Ag7AmP8qZ0SA4n1v9T'
+dataList.append(encode('--' + boundary))
+dataList.append(encode('Content-Disposition: form-data; name=otp_id;'))
+
+dataList.append(encode('Content-Type: {}'.format('text/plain')))
+dataList.append(encode(''))
+
+dataList.append(encode("3d343630-2cbf-46f0-bc27-a867c8d692e9"))
+dataList.append(encode('--'+boundary+'--'))
+dataList.append(encode(''))
+body = b'\r\n'.join(dataList)
+payload = body
+headers = {
+  'Authorization': '{{api_access_token}}',
+  'Content-type': 'multipart/form-data; boundary={}'.format(boundary)
+}
+conn.request("POST", "/api/verifier/resend
+", payload, headers)
+res = conn.getresponse()
+data = res.read()
+print(data.decode("utf-8"))
