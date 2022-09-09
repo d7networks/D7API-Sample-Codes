@@ -1,0 +1,10 @@
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("text/plain");
+RequestBody body = RequestBody.create(mediaType, "");
+Request request = new Request.Builder()
+  .url("https://api.d7networks.com/verify/v1/report/1715581b-dea2-4844-8687-cad3c6a965c5")
+  .method("GET", body)
+  .addHeader("Authorization", "Bearer {{api_access_token}}")
+  .build();
+Response response = client.newCall(request).execute();

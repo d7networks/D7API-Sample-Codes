@@ -1,0 +1,22 @@
+require "uri"
+require "json"
+require "net/http"
+
+url = URI("https://api.d7networks.com/verify/v1/otp/send-otp")
+
+https = Net::HTTP.new(url.host, url.port)
+https.use_ssl = true
+
+request = Net::HTTP::Post.new(url)
+request["Authorization"] = "Bearer {{api_access_token}}"
+request["Content-Type"] = "application/json"
+request.body = JSON.dump({
+  "originator": "SignOTP",
+  "recipient": "{{recipient1}}",
+  "content": "Greetings from D7 API, your mobile verification code is: {}",
+  "expiry": "600",
+  "data_coding": "text"
+})
+
+response = https.request(request)
+puts response.read_body

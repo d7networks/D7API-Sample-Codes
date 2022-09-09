@@ -1,0 +1,8 @@
+$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$headers.Add("Authorization", "Bearer {{api_access_token}}")
+$headers.Add("Content-Type", "application/json")
+
+$body = "{`n    `"originator`": `"SignOTP`",`n    `"recipient`": `"{{recipient1}}`",`n    `"content`": `"Greetings from D7 API, your mobile verification code is: {}`",`n    `"expiry`": `"600`",`n    `"data_coding`": `"text`"`n}"
+
+$response = Invoke-RestMethod 'https://api.d7networks.com/verify/v1/otp/send-otp' -Method 'POST' -Headers $headers -Body $body
+$response | ConvertTo-Json

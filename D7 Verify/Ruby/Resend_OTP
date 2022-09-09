@@ -1,0 +1,18 @@
+require "uri"
+require "json"
+require "net/http"
+
+url = URI("https://api.d7networks.com/verify/v1/otp/resend-otp")
+
+https = Net::HTTP.new(url.host, url.port)
+https.use_ssl = true
+
+request = Net::HTTP::Post.new(url)
+request["Authorization"] = "Bearer {{api_access_token}}"
+request["Content-Type"] = "application/json"
+request.body = JSON.dump({
+  "otp_id": "8d963dbf-d655-4fe6-9157-48885a036050"
+})
+
+response = https.request(request)
+puts response.read_body

@@ -1,0 +1,17 @@
+var settings = {
+  "url": "https://api.d7networks.com/verify/v1/otp/verify-otp",
+  "method": "POST",
+  "timeout": 0,
+  "headers": {
+    "Authorization": "Bearer {{api_access_token}}",
+    "Content-Type": "application/json"
+  },
+  "data": JSON.stringify({
+    "otp_id": "8d963dbf-d655-4fe6-9157-48885a036050",
+    "otp_code": 435986
+  }),
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});

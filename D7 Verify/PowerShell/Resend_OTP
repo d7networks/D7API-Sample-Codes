@@ -1,0 +1,8 @@
+$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$headers.Add("Authorization", "Bearer {{api_access_token}}")
+$headers.Add("Content-Type", "application/json")
+
+$body = "{`n    `"otp_id`":`"8d963dbf-d655-4fe6-9157-48885a036050`"`n}"
+
+$response = Invoke-RestMethod 'https://api.d7networks.com/verify/v1/otp/resend-otp' -Method 'POST' -Headers $headers -Body $body
+$response | ConvertTo-Json

@@ -1,0 +1,2 @@
+curl --location --request GET 'https://api.d7networks.com/verify/v1/report/1715581b-dea2-4844-8687-cad3c6a965c5' \
+--header 'Authorization: Bearer {{api_access_token}}'

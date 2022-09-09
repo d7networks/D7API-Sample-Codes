@@ -1,0 +1,16 @@
+import requests
+import json
+
+url = "https://api.d7networks.com/verify/v1/otp/resend-otp"
+
+payload = json.dumps({
+  "otp_id": "8d963dbf-d655-4fe6-9157-48885a036050"
+})
+headers = {
+  'Authorization': 'Bearer {{api_access_token}}',
+  'Content-Type': 'application/json'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)

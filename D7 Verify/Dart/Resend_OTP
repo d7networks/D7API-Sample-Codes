@@ -1,0 +1,18 @@
+var headers = {
+  'Authorization': 'Bearer {{api_access_token}}',
+  'Content-Type': 'application/json'
+};
+var request = http.Request('POST', Uri.parse('https://api.d7networks.com/verify/v1/otp/resend-otp'));
+request.body = json.encode({
+  "otp_id": "8d963dbf-d655-4fe6-9157-48885a036050"
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}

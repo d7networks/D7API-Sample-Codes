@@ -1,0 +1,20 @@
+var settings = {
+  "url": "https://api.d7networks.com/verify/v1/otp/send-otp",
+  "method": "POST",
+  "timeout": 0,
+  "headers": {
+    "Authorization": "Bearer {{api_access_token}}",
+    "Content-Type": "application/json"
+  },
+  "data": JSON.stringify({
+    "originator": "SignOTP",
+    "recipient": "{{recipient1}}",
+    "content": "Greetings from D7 API, your mobile verification code is: {}",
+    "expiry": "600",
+    "data_coding": "text"
+  }),
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});

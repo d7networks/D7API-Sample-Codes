@@ -1,0 +1,12 @@
+var settings = {
+  "url": "https://api.d7networks.com/verify/v1/report/1715581b-dea2-4844-8687-cad3c6a965c5",
+  "method": "GET",
+  "timeout": 0,
+  "headers": {
+    "Authorization": "Bearer {{api_access_token}}"
+  },
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
