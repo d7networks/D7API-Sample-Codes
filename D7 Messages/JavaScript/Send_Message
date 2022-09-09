@@ -7,7 +7,24 @@ var settings = {
     "Accept": "application/json",
     "Authorization": "Bearer {{api_access_token}}"
   },
-  "data": "{\n  \"messages\": [\n    {\n        \"channel\": \"sms\",\n        \"recipients\": [{{recipient1}},{{recipient2}}],\n        \"content\": \"Greetings from D7 API\",\n        \"msg_type\": \"text\",\n        \"data_coding\": \"text\"\n    }\n  ],\n  \"message_globals\": {\n    \"originator\": \"SignOTP\",\n    \"report_url\": \"https://the_url_to_recieve_delivery_report.com\"\n  }\n}",
+  "data": JSON.stringify({
+    "messages": [
+      {
+        "channel": "sms",
+        "recipients": [
+          "{{recipient1}}",
+          "{{recipient2}}"
+        ],
+        "content": "Greetings from D7 API",
+        "msg_type": "text",
+        "data_coding": "text"
+      }
+    ],
+    "message_globals": {
+      "originator": "SignOTP",
+      "report_url": "https://the_url_to_recieve_delivery_report.com"
+    }
+  }),
 };
 
 $.ajax(settings).done(function (response) {

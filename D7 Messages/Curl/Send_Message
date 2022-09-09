@@ -6,7 +6,7 @@ curl --location --request POST 'https://api.d7networks.com/messages/v1/send' \
   "messages": [
     {
         "channel": "sms",
-        "recipients": [{{recipient1}},{{recipient2}}],
+        "recipients": ["{{recipient1}}","{{recipient2}}"],
         "content": "Greetings from D7 API",
         "msg_type": "text",
         "data_coding": "text"

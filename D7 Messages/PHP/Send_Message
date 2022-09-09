@@ -15,7 +15,7 @@ curl_setopt_array($curl, array(
   "messages": [
     {
         "channel": "sms",
-        "recipients": [{{recipient1}},{{recipient2}}],
+        "recipients": ["{{recipient1}}","{{recipient2}}"],
         "content": "Greetings from D7 API",
         "msg_type": "text",
         "data_coding": "text"
