@@ -1,0 +1,3 @@
+curl --location --request GET 'https://api.d7networks.com/messages/v1/balance' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer {{api_access_token}}'

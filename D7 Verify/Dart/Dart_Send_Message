@@ -1,7 +1,7 @@
 var headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json',
-  'Authorization': 'Bearer TOKEN'
+  'Authorization': 'Bearer {{api_access_token}}'
 };
 var request = http.Request('POST', Uri.parse('https://api.d7networks.com/messages/v1/send'));
 request.body = json.encode({
@@ -9,8 +9,8 @@ request.body = json.encode({
     {
       "channel": "sms",
       "recipients": [
-        9715097526xx,
-        9715097526xx
+          {{recipient1}},
+          {{recipient2}}
       ],
       "content": "Greetings from D7 API",
       "msg_type": "text",

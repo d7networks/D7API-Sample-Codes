@@ -1,0 +1,10 @@
+curl --location --request POST 'https://api.d7networks.com/verify/v1/otp/send-otp' \
+--header 'Authorization: Bearer {{api_access_token}}' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "originator": "SignOTP",
+    "recipient": "{{recipient1}}",
+    "content": "Greetings from D7 API, your mobile verification code is: {}",
+    "expiry": "600",
+    "data_coding": "text"
+}'

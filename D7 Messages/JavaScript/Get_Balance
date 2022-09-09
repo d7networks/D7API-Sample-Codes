@@ -1,0 +1,13 @@
+var settings = {
+  "url": "https://api.d7networks.com/messages/v1/balance",
+  "method": "GET",
+  "timeout": 0,
+  "headers": {
+    "Accept": "application/json",
+    "Authorization": "Bearer {{api_access_token}}"
+  },
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
