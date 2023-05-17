@@ -1,0 +1,11 @@
+require "uri"
+require "net/http"
+
+url = URI("http://api.alpha.d7networks.com/report/v1/viber-log/{{req_id}}")
+
+http = Net::HTTP.new(url.host, url.port);
+request = Net::HTTP::Get.new(url)
+request["Authorization"] = "Bearer {{api_access_token}}"
+
+response = http.request(request)
+puts response.read_body
