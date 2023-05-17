@@ -1,0 +1,26 @@
+import requests
+import json
+
+url = "https://api.d7networks.com/viber/v1/send/"
+
+payload = json.dumps({
+  "messages": [
+    {
+      "content": "Greetings D7 Networks",
+      "originator": "INFO2WAY",
+      "recipients": [
+        "{{recipient1}}",
+        "{{recipient2}}"
+      ],
+      "label": "PROMOTION"
+    }
+  ]
+})
+headers = {
+  'Authorization': 'Bearer {{api_access_token}}',
+  'Content-Type': 'application/json'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
