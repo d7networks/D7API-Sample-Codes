@@ -1,0 +1,29 @@
+curl --location --request POST 'https://api.d7networks.com/viber/v1/send/' \
+--header 'Authorization: Bearer {{api_access_token}}' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "messages": [
+      {
+        "content": "Test Message from D7 Networks",
+        "button_caption":"SubScribe",
+        "button_action":"http://www.google.com",
+        "file_name":'{{file_url}}',
+        "image":'{{image_url}}',
+        "video":{
+            "duration":'{{duration of video in sec}}',
+            "fileSize":'{{fileSize}}',
+            "thumbnail":'{{thumbnail}}',
+            "url":'{{video url}}'
+        },
+        "recipients": [
+            "{{recipient1}}",
+            "{{recipient2}}"
+        ],
+        "label":"PROMOTION"
+      }
+    ],
+    "message_globals":{
+        "originator":"INFO2WAY",
+        "call_back_url":"https://the_url_to_recieve_delivery_report.com"
+    }
+  }'

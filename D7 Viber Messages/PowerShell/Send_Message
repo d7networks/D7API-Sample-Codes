@@ -1,0 +1,8 @@
+$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$headers.Add("Authorization", "Bearer {{api_access_token}}")
+$headers.Add("Content-Type", "application/json")
+
+$body = "{`n  `"messages`": [`n    {`n      `"content`": `"Test Message from D7 Networks`",`n      `"button_caption`":`"SubScribe`",`n      `"button_action`":`"http://www.google.com`",`n      `"file_name`":{{file_url}},`n      `"image`":{{image_url}},`n      `"video`":{`n          `"duration`":{{duration of video in sec}},`n          `"fileSize`":{{fileSize}},`n          `"thumbnail`":{{thumbnail}},`n          `"url`":{{video url}}`n      },`n      `"recipients`": [`n          {{recipient1}},`n          {{recipient2}}`n      ],`n      `"label`":`"PROMOTION`"`n    }`n  ],`n  `"message_globals`":{`n      `"originator`":`"INFO2WAY`",`n      `"call_back_url`":`"https://the_url_to_recieve_delivery_report.com`"`n  }`n}"
+
+$response = Invoke-RestMethod 'http://api.alpha.d7networks.com/viber/v1/send/' -Method 'POST' -Headers $headers -Body $body
+$response | ConvertTo-Json

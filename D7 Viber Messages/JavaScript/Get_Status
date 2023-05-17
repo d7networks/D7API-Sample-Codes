@@ -1,0 +1,12 @@
+var settings = {
+  "url": "http://api.alpha.d7networks.com/report/v1/viber-log/{{req_id}}",
+  "method": "GET",
+  "timeout": 0,
+  "headers": {
+    "Authorization": "Bearer {{api_access_token}}"
+  },
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});

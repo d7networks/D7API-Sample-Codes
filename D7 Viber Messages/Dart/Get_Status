@@ -1,0 +1,15 @@
+var headers = {
+  'Authorization': 'Bearer {{api_access_token}}'
+};
+var request = http.Request('GET', Uri.parse('http://api.alpha.d7networks.com/report/v1/viber-log/{{req_id}}'));
+
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}

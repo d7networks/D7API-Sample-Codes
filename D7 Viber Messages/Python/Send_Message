@@ -6,15 +6,28 @@ url = "https://api.d7networks.com/viber/v1/send/"
 payload = json.dumps({
   "messages": [
     {
-      "content": "Greetings D7 Networks",
-      "originator": "INFO2WAY",
+      "content": "Test Message from D7 Networks",
+      "button_caption":"SubScribe",
+      "button_action":"http://www.google.com",
+      "file_name":'{{file_url}}',
+      "image":'{{image_url}}',
+      "video":{
+          "duration":'{{duration of video in sec}}',
+          "fileSize":'{{fileSize}}',
+          "thumbnail":'{{thumbnail}}',
+          "url":'{{video url}}'
+      },
       "recipients": [
-        "{{recipient1}}",
-        "{{recipient2}}"
+          "{{recipient1}}",
+          "{{recipient2}}"
       ],
-      "label": "PROMOTION"
+      "label":"PROMOTION"
     }
-  ]
+  ],
+  "message_globals":{
+      "originator":"INFO2WAY",
+      "call_back_url":"https://the_url_to_recieve_delivery_report.com"
+  }
 })
 headers = {
   'Authorization': 'Bearer {{api_access_token}}',

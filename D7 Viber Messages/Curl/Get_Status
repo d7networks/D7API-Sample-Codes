@@ -1,0 +1,2 @@
+curl --location --request GET 'http://api.alpha.d7networks.com/report/v1/viber-log/{{req_id}}' \
+--header 'Authorization: Bearer {{api_access_token}}'

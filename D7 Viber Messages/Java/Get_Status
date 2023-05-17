@@ -1,0 +1,10 @@
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("text/plain");
+RequestBody body = RequestBody.create(mediaType, "");
+Request request = new Request.Builder()
+  .url("http://api.alpha.d7networks.com/report/v1/viber-log/{{req_id}}")
+  .method("GET", body)
+  .addHeader("Authorization", "Bearer {{api_access_token}}")
+  .build();
+Response response = client.newCall(request).execute();

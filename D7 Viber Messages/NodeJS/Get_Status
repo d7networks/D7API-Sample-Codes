@@ -1,0 +1,17 @@
+var axios = require('axios');
+
+var config = {
+  method: 'get',
+  url: 'http://api.alpha.d7networks.com/report/v1/viber-log/{{req_id}}',
+  headers: { 
+    'Authorization': 'Bearer {{api_access_token}}'
+  }
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});

@@ -1,0 +1,5 @@
+$headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+$headers.Add("Authorization", "Bearer {{api_access_token}}")
+
+$response = Invoke-RestMethod 'http://api.alpha.d7networks.com/report/v1/viber-log/{{req_id}}' -Method 'GET' -Headers $headers
+$response | ConvertTo-Json
