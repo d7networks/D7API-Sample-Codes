@@ -1,0 +1,12 @@
+import requests
+
+url = "https://api.d7networks.com/report/v1/slack-log/c07f6ce1-6cb7-4542-844c-e7209870f5ca"
+
+payload={}
+headers = {
+  'Authorization': 'Bearer {{api_access_token}}'
+}
+
+response = requests.request("GET", url, headers=headers, data=payload)
+
+print(response.text)

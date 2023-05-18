@@ -1,0 +1,36 @@
+var axios = require('axios');
+var data = JSON.stringify({
+  "messages": [
+    {
+      "channel": "slack",
+      "content": "Greetings from D7 API",
+      "msg_type": "text",
+      "data_coding": "text"
+    }
+  ],
+  "message_globals": {
+    "originator": "SLACK",
+    "work_space_name": "WorkspaceName",
+    "channel_name": "Channelname",
+    "report_url": "https://the_url_to_recieve_delivery_report.com"
+  }
+});
+
+var config = {
+  method: 'post',
+  url: 'https://api.d7networks.com/messages/v1/send',
+  headers: { 
+    'Content-Type': 'application/json', 
+    'Accept': 'application/json', 
+    'Authorization': 'Bearer {{api_access_token}}'
+  },
+  data : data
+};
+
+axios(config)
+.then(function (response) {
+  console.log(JSON.stringify(response.data));
+})
+.catch(function (error) {
+  console.log(error);
+});

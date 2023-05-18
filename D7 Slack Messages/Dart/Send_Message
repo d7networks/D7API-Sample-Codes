@@ -1,0 +1,32 @@
+var headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'Authorization': 'Bearer {{api_access_token}}'
+};
+var request = http.Request('POST', Uri.parse('https://api.d7networks.com/messages/v1/send'));
+request.body = json.encode({
+  "messages": [
+    {
+      "channel": "slack",
+      "content": "Greetings from D7 API",
+      "msg_type": "text",
+      "data_coding": "text"
+    }
+  ],
+  "message_globals": {
+    "originator": "SLACK",
+    "work_space_name": "WorkspaceName",
+    "channel_name": "Channelname",
+    "report_url": "https://the_url_to_recieve_delivery_report.com"
+  }
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
