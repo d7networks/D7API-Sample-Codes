@@ -9,14 +9,12 @@ request.body = json.encode({
     {
       "channel": "slack",
       "content": "Greetings from D7 API",
-      "msg_type": "text",
-      "data_coding": "text"
+      "work_space_name": "WorkspaceName",
+      "channel_name": "Channelname",
     }
   ],
   "message_globals": {
     "originator": "SLACK",
-    "work_space_name": "WorkspaceName",
-    "channel_name": "Channelname",
     "report_url": "https://the_url_to_recieve_delivery_report.com"
   }
 });
