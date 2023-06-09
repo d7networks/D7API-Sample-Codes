@@ -1,0 +1,15 @@
+var headers = {
+  'Authorization': 'Bearer {{api_access_token}}'
+};
+var request = http.Request('GET', Uri.parse('https://api.d7networks.com/numlookup/v1/report/c07f6ce1-6cb7-4542-844c-e7209870f5ca'));
+
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}

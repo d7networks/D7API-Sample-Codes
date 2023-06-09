@@ -1,0 +1,18 @@
+var settings = {
+  "url": "http://api.d7networks.com/numlookup/v1/send",
+  "method": "POST",
+  "timeout": 0,
+  "headers": {
+    "Authorization": "Bearer {{api_access_token}}",
+    "Content-Type": "application/json"
+  },
+  "data": JSON.stringify({
+    "recipient": [
+        "{{recipient}}"
+    ]
+  }),
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});

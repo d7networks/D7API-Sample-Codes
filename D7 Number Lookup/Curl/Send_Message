@@ -1,0 +1,6 @@
+curl --location --request POST 'http://api.d7networks.com/numlookup/v1/send' \
+--header 'Authorization: Bearer {{api_access_token}}' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "recipient":[{{recipient}}]
+}'

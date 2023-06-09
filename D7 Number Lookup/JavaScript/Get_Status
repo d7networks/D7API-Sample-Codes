@@ -1,0 +1,12 @@
+var settings = {
+  "url": "https://api.d7networks.com/numlookup/v1/report/c07f6ce1-6cb7-4542-844c-e7209870f5ca",
+  "method": "GET",
+  "timeout": 0,
+  "headers": {
+    "Authorization": "Bearer {{api_access_token}}"
+  },
+};
+
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});
