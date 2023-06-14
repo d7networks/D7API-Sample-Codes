@@ -1,7 +1,7 @@
 require "uri"
 require "net/http"
 
-url = URI("https://api.d7networks.com/report/v1/slack-log/c07f6ce1-6cb7-4542-844c-e7209870f5ca")
+url = URI("https://api.d7networks.com/report/v1/message-log/c07f6ce1-6cb7-4542-844c-e7209870f5ca")
 
 https = Net::HTTP.new(url.host, url.port)
 https.use_ssl = true

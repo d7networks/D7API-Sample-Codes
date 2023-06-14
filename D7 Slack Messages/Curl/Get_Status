@@ -1,2 +1,2 @@
-curl --location --request GET 'https://api.d7networks.com/report/v1/slack-log/c07f6ce1-6cb7-4542-844c-e7209870f5ca' \
+curl --location --request GET 'https://api.d7networks.com/report/v1/message-log/c07f6ce1-6cb7-4542-844c-e7209870f5ca' \
 --header 'Authorization: Bearer {{api_access_token}}'

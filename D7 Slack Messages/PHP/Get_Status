@@ -3,7 +3,7 @@
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://api.d7networks.com/report/v1/slack-log/c07f6ce1-6cb7-4542-844c-e7209870f5ca',
+  CURLOPT_URL => 'https://api.d7networks.com/report/v1/message-log/c07f6ce1-6cb7-4542-844c-e7209870f5ca',
   CURLOPT_RETURNTRANSFER => true,
   CURLOPT_ENCODING => '',
   CURLOPT_MAXREDIRS => 10,
