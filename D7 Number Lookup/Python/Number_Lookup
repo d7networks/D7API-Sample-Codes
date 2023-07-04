@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = "http://api.d7networks.com/numlookup/v1/send"
+url = "http://api.d7networks.com/hlr/v1/lookup"
 
 payload = json.dumps({
   "recipient": [

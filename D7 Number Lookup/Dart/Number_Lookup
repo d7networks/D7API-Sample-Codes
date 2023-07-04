@@ -2,7 +2,7 @@ var headers = {
   'Authorization': 'Bearer {{api_access_token}}',
   'Content-Type': 'application/json'
 };
-var request = http.Request('POST', Uri.parse('http://api.d7networks.com/numlookup/v1/send'));
+var request = http.Request('POST', Uri.parse('http://api.d7networks.com/hlr/v1/lookup'));
 request.body = json.encode({
   "recipient": [
     "{{recipient}}"
