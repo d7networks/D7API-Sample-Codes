@@ -4,9 +4,7 @@ var headers = {
 };
 var request = http.Request('POST', Uri.parse('http://api.d7networks.com/hlr/v1/lookup'));
 request.body = json.encode({
-  "recipient": [
-    "{{recipient}}"
-  ]
+  "recipient": "{{recipient}}"
 });
 request.headers.addAll(headers);
 

@@ -2,5 +2,5 @@ curl --location --request POST 'http://api.d7networks.com/hlr/v1/lookup' \
 --header 'Authorization: Bearer {{api_access_token}}' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-    "recipient":[{{recipient}}]
+    "recipient":{{recipient}}
 }'

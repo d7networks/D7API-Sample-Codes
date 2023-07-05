@@ -1,7 +1,7 @@
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n    \"recipient\":[\"{{recipient}}\"]\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n    \"recipient\":\"{{recipient}}\"\n}");
 Request request = new Request.Builder()
   .url("http://api.d7networks.com/hlr/v1/lookup")
   .method("POST", body)

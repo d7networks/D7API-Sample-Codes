@@ -13,7 +13,7 @@ func main() {
   method := "POST"
 
   payload := strings.NewReader(`{
-    "recipient":[{{recipient}}]
+    "recipient":{{recipient}}
 }`)
 
   client := &http.Client {

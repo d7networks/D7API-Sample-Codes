@@ -2,7 +2,7 @@ $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
 $headers.Add("Authorization", "Bearer {{api_access_token}}")
 $headers.Add("Content-Type", "application/json")
 
-$body = "{`n    `"recipient`":[`"{{recipient}}`"]`n}"
+$body = "{`n    `"recipient`":`"{{recipient}}`"`n}"
 
 $response = Invoke-RestMethod 'http://api.d7networks.com/hlr/v1/lookup' -Method 'POST' -Headers $headers -Body $body
 $response | ConvertTo-Json

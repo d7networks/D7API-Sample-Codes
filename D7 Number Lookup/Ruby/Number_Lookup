@@ -9,9 +9,7 @@ request = Net::HTTP::Post.new(url)
 request["Authorization"] = "Bearer {{api_access_token}}"
 request["Content-Type"] = "application/json"
 request.body = JSON.dump({
-  "recipient": [
-    "{{recipient}}"
-  ]
+  "recipient": "{{recipient}}"
 })
 
 response = http.request(request)
