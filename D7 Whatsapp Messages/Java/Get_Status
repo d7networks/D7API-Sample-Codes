@@ -1,0 +1,10 @@
+OkHttpClient client = new OkHttpClient().newBuilder()
+  .build();
+MediaType mediaType = MediaType.parse("text/plain");
+RequestBody body = RequestBody.create(mediaType, "");
+Request request = new Request.Builder()
+  .url("https://api.d7networks.com/whatsapp/v1/report/c07f6ce1-6cb7-4542-844c-e7209870f5ca")
+  .method("GET", body)
+  .addHeader("Authorization", "Bearer {{api_access_token}}")
+  .build();
+Response response = client.newCall(request).execute();

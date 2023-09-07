@@ -1,0 +1,36 @@
+var headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'Authorization': 'Bearer {{api_access_token}}'
+};
+var request = http.Request('POST', Uri.parse('https://api.d7networks.com/whatsapp/v1/send'));
+request.body = json.encode({
+  "messages": [
+    {
+        "originator": "{{originator}}",
+        "originator_name": "originator_name",
+        "recipients": ["{{recipient1}}","{{recipient2}}"],
+        "content": {
+          "message_type": "TEMPLATE",
+          "template": {
+              "template_id": "{{template_id}}",
+              "body_parameter_values": {
+                  "0": "first_parameter_in_your_template",
+                  "1": "second_parameter_in_your_template"
+              }
+          }
+      },
+      "report_url": "https://the_url_to_recieve_delivery_report.com"
+    }
+  ]
+});
+request.headers.addAll(headers);
+
+http.StreamedResponse response = await request.send();
+
+if (response.statusCode == 200) {
+  print(await response.stream.bytesToString());
+}
+else {
+  print(response.reasonPhrase);
+}
