@@ -1,0 +1,36 @@
+require "uri"
+require "json"
+require "net/http"
+
+url = URI("https://api.d7networks.com/whatsapp/v1/send")
+
+https = Net::HTTP.new(url.host, url.port)
+https.use_ssl = true
+
+request = Net::HTTP::Post.new(url)
+request["Content-Type"] = "application/json"
+request["Accept"] = "application/json"
+request["Authorization"] = "Bearer {{api_access_token}}"
+request.body = JSON.dump({
+  "messages": [
+    {
+        "originator": "{{originator}}",
+        "originator_name": "originator_name",
+        "recipients": ["{{recipient1}}","{{recipient2}}"],
+        "content": {
+          "message_type": "TEMPLATE",
+          "template": {
+              "template_id": "{{template_id}}",
+              "body_parameter_values": {
+                  "0": "first_parameter_in_your_template",
+                  "1": "second_parameter_in_your_template"
+              }
+          }
+      },
+      "report_url": "https://the_url_to_recieve_delivery_report.com"
+    }
+  ]
+})
+
+response = https.request(request)
+puts response.read_body
