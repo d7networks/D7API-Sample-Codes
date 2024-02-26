@@ -1,9 +1,9 @@
 OkHttpClient client = new OkHttpClient().newBuilder()
   .build();
 MediaType mediaType = MediaType.parse("application/json");
-RequestBody body = RequestBody.create(mediaType, "{\n  \"messages\": [\n    {\n        \"originator\": \"{{originator}}\",\n        \"originator_name\": \"originator_name\",\n        \"recipients\": [\"{{recipient1}}\",\"{{recipient2}}\"],\n        \"content\": {\n                \"message_type\": \"TEMPLATE\",\n       \"template\":{\n                    \"template_id\": \"{{template_id}}\",\n                    \"body_parameter_values\":{\n                        \"0\": \"first_parameter_in_your_template\",\n                        \"1\": \"second_parameter_in_your_template\",\n                    }\n                }\n            },\n      \"report_url\": \"https://the_url_to_recieve_delivery_report.com\"\n    }\n  ]\n}");
+RequestBody body = RequestBody.create(mediaType, "{\n  \"messages\": [\n    {\n        \"originator\": \"{{originator}}\",\n        \"recipients\": [\"{{recipient1}}\",\"{{recipient2}}\"],\n        \"content\": {\n                \"message_type\": \"TEMPLATE\",\n       \"template\":{\n                    \"template_id\": \"{{template_id}}\",\n                    \"body_parameter_values\":{\n                        \"0\": \"first_parameter_in_your_template\",\n                        \"1\": \"second_parameter_in_your_template\",\n                    }\n                }\n            },\n      \"report_url\": \"https://the_url_to_recieve_delivery_report.com\"\n    }\n  ]\n}");
 Request request = new Request.Builder()
-  .url("https://api.d7networks.com/whatsapp/v1/send")
+  .url("https://api.d7networks.com/whatsapp/v2/send")
   .method("POST", body)
   .addHeader("Content-Type", "application/json")
   .addHeader("Accept", "application/json")

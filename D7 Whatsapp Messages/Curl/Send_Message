@@ -1,4 +1,4 @@
-curl --location --request POST 'https://api.d7networks.com/whatsapp/v1/send' \
+curl --location --request POST 'https://api.d7networks.com/whatsapp/v2/send' \
 --header 'Content-Type: application/json' \
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer {{api_access_token}}' \
@@ -6,7 +6,6 @@ curl --location --request POST 'https://api.d7networks.com/whatsapp/v1/send' \
   "messages": [
     {
         "originator": "{{originator}}",
-        "originator_name": "originator_name",
         "recipients": ["{{recipient1}}","{{recipient2}}"],
         "content": {
           "message_type": "TEMPLATE",

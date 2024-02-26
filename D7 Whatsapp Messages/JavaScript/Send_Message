@@ -1,5 +1,5 @@
 var settings = {
-  "url": "https://api.d7networks.com/whatsapp/v1/send",
+  "url": "https://api.d7networks.com/whatsapp/v2/send",
   "method": "POST",
   "timeout": 0,
   "headers": {
@@ -11,7 +11,6 @@ var settings = {
     "messages": [
       {
           "originator": "{{originator}}",
-          "originator_name": "originator_name",
           "recipients": ["{{recipient1}}","{{recipient2}}"],
           "content": {
             "message_type": "TEMPLATE",

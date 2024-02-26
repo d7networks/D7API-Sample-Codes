@@ -3,7 +3,7 @@ $headers.Add("Content-Type", "application/json")
 $headers.Add("Accept", "application/json")
 $headers.Add("Authorization", "Bearer {{api_access_token}}")
 
-$body = "{`n  `"messages`": [`n    {`n        `"originator`": `"{{originator}}`",`n        `"originator_name`": `"{{originator_name}}`",`n        `"recipients`": [`"{{recipient1}}`",`"{{recipient2}}`"],`n        `"content`": {`n        `"message_type`": `"TEMPLATE`",`n        `"template`": {`n        `"template_id`": `"{{template_id}}`",`n      `"body_parameter_values`": {`n        `"0`": `"first_parameter_in_your_template`",`n        `"2`": `"second_parameter_in_your_template`"`n}`n}`n},`n       `"report_url`": `"https://the_url_to_recieve_delivery_report.com`"`n}`n  ] `n}"
+$body = "{`n  `"messages`": [`n    {`n        `"originator`": `"{{originator}}`",`n        `"recipients`": [`"{{recipient1}}`",`"{{recipient2}}`"],`n        `"content`": {`n        `"message_type`": `"TEMPLATE`",`n        `"template`": {`n        `"template_id`": `"{{template_id}}`",`n      `"body_parameter_values`": {`n        `"0`": `"first_parameter_in_your_template`",`n        `"2`": `"second_parameter_in_your_template`"`n}`n}`n},`n       `"report_url`": `"https://the_url_to_recieve_delivery_report.com`"`n}`n  ] `n}"
 
-$response = Invoke-RestMethod 'https://api.d7networks.com/whatsapp/v1/send' -Method 'POST' -Headers $headers -Body $body
+$response = Invoke-RestMethod 'https://api.d7networks.com/whatsapp/v2/send' -Method 'POST' -Headers $headers -Body $body
 $response | ConvertTo-Json

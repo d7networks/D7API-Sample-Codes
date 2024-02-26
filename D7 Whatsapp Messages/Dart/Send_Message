@@ -3,12 +3,11 @@ var headers = {
   'Accept': 'application/json',
   'Authorization': 'Bearer {{api_access_token}}'
 };
-var request = http.Request('POST', Uri.parse('https://api.d7networks.com/whatsapp/v1/send'));
+var request = http.Request('POST', Uri.parse('https://api.d7networks.com/whatsapp/v2/send'));
 request.body = json.encode({
   "messages": [
     {
         "originator": "{{originator}}",
-        "originator_name": "originator_name",
         "recipients": ["{{recipient1}}","{{recipient2}}"],
         "content": {
           "message_type": "TEMPLATE",
