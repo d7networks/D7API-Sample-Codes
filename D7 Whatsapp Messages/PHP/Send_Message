@@ -7,6 +7,7 @@
     $body_parameter_values = array("0": "first_parameter_in_your_template","1": "second_parameter_in_your_template")
     $template =  array( 
         "template_id"=> $template_id,
+        "language"=> $template_language,
         "body_parameter_values"=> $body_parameter_values
     );
     $content = array( 

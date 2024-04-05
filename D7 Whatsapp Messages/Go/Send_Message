@@ -21,6 +21,7 @@ func main() {
             "message_type": "TEMPLATE",
             "template": {
                 "template_id": "{{template_id}}",
+                "language": "{{template_language}}",
                 "body_parameter_values": {
                     "0": "first_parameter_in_your_template",
                     "1": "second_parameter_in_your_template"
