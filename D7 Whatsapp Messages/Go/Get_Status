@@ -8,7 +8,7 @@ import (
 
 func main() {
 
-  url := "https://api.d7networks.com/whatsapp/v1/report/c07f6ce1-6cb7-4542-844c-e7209870f5ca"
+  url := "https://api.d7networks.com/whatsapp/v2/report/c07f6ce1-6cb7-4542-844c-e7209870f5ca"
   method := "GET"
 
   client := &http.Client {

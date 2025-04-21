@@ -2,7 +2,7 @@ require "uri"
 require "json"
 require "net/http"
 
-url = URI("https://api.d7networks.com/whatsapp/v1/send")
+url = URI("https://api.d7networks.com/whatsapp/v2/send")
 
 https = Net::HTTP.new(url.host, url.port)
 https.use_ssl = true
